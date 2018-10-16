@@ -74,11 +74,9 @@ include "includes/cabecalho.php";
          }
 
          //Validação termos de uso
-         if(!isset($_POST["concordo"])){
+         if(!isset($_POST["concordo"]))
            $vetErros.="Você deve aceitar os termos de uso do site!<br>";
-         }else{
-           $concorpo = $_POST["concordo"];
-         }
+
          //Conclusão de cadastro
          if($vetErros != ""){// se houve algum erro
            echo "$vetErros";
