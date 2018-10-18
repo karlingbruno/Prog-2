@@ -12,18 +12,6 @@
 	<header>
 		<h1>Rent a Tool</h1>
 		<div class="canto">
-		<?php
-			session_start();
-			$variavel;
-			if(isset($_SESSION["login"])){
-				$variavel = $_SESSION["login"];
-				echo "teste";
-			}else{
-				echo "teste2";
-				$variavel = "Login";
-			}
-				echo "<p>$variavel<a href="login.php"></a></p>";
-			 ?>
 			 <p class="carrinho"><a href="#">Meu carrinho <img src="img/cart.png" width="32"></a></p>
 			 </div>
 		<p id="exibeMenu">Menu</p>
