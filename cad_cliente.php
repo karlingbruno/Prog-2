@@ -20,14 +20,12 @@ include "includes/cabecalho.php";
            $nome = htmlspecialchars($nome);
            $nome = addslashes($nome);
          }
-
          // Válidar Email
          if($_POST["email"] == "" || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
            $vetErros.="Digite um email válido!<br>";
          }else{
            $email = $_POST["email"];
          }
-
          //Validar Endereço
          if($_POST["endereco"] == ""){
            $vetErros.="Digite um endereço válido!<br>";
@@ -36,7 +34,6 @@ include "includes/cabecalho.php";
            $endereco = htmlspecialchars($endereco);
            $endereco = addslashes($endereco);
          }
-
          //Validar bairro
          if($_POST["bairro"] == ""){
            $vetErros.="Por favor selecione o bairro!<br>";
@@ -45,14 +42,12 @@ include "includes/cabecalho.php";
            $bairro = htmlspecialchars($bairro);
            $bairro = addslashes($bairro);
          }
-
          //Validar perfil
          if(!isset($_POST["perfil"])){
            $vetErros.= "Por favor marque uma opção de perfil!<br>";
          }else{
            $perfil = $_POST["perfil"];
          }
-
          //Validar login
          if($_POST["login"] == "" || strlen($_POST["login"]) < 6 ){
            $vetErros.= "Por favor digite um login com no mínimo 6 caracteres!<br>";
@@ -61,29 +56,26 @@ include "includes/cabecalho.php";
            $login = htmlspecialchars($login);
            $login = addslashes($login);
          }
-
          //Validação senha
          if(strlen($_POST["senha"]) < 6){
            $vetErros.="Por favor digite uma senha com no mínimo 6 caracteres!<br>";
          }else{
            if($_POST["senha2"] == $_POST["senha"]){
-             $senha = md5($_POST["senha"]);
+             $senha1 = md5($_POST["senha"]);
            }else{
              $vetErros.= "A senha não confere!<br>";
            }
          }
-
          //Validação termos de uso
          if(!isset($_POST["concordo"]))
            $vetErros.="Você deve aceitar os termos de uso do site!<br>";
-
          //Conclusão de cadastro
          if($vetErros != ""){// se houve algum erro
            echo "$vetErros";
          }else{//se não houve nenhum erro
           include "includes/conexao.php";
           $sql = "INSERT INTO cliente (nome,email,endereco,bairro,perfil,login,senha) VALUES ('$nome','$email','$endereco',
-          '$bairro','$perfil','$login','$senha');";
+          '$bairro','$perfil','$login','$senha1');";
           mysqli_query($conexao,$sql);
           echo "Cadastro concluído!<br>";
          }
